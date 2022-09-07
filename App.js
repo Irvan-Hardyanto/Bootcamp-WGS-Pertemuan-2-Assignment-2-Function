@@ -30,7 +30,7 @@ const pertanyaan=(question)=>{
     //Promise bisa dianalogikan sebagai sebuah "janji".
     return new Promise((resolve, reject) => {
         rl.question(question,(answer)=>{
-            resolve(answer);//resolve itu callback (function)
+            resolve(answer);//pada kode ini, promise nya akan resolve jika pengguna menjawab pertanyaan nya-> callback function rl.question() dieksekusi.
         })
     });
 }
@@ -58,6 +58,7 @@ const main=async ()=>{
     contacts.push(contact);//tambahkan nama,nomor telepon, dan email yang baru saja dibaca dari cmd
     fs.writeFileSync('data/contacts.json',JSON.stringify(contacts));//tulis data yang baru ke dalam berkas .json
     console.log('Terimakasih sudah memasukkan data!');//konfirmasi data sudah berhasil ditulis ke file json
+    rl.close();
 }
 
 main().catch(err=> {
